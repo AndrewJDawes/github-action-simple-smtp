@@ -1,0 +1,43 @@
+# action.yml
+name: 'GitHub Action Simple SMTP'
+description: 'Send email via SMTP'
+inputs:
+  host:  # hostname of SMTP server
+    description: 'Hostname of SMTP server'
+    required: true
+  port:  # port of SMTP server
+    description: 'port of SMTP server'
+    default: '587'
+  username:  # username of SMTP server
+    description: 'username of SMTP server'
+    required: true
+  password:  # password of SMTP server
+    description: 'password of SMTP server'
+    required: true
+  sender:  # sender of email
+    description: 'sender of email'
+    required: true
+  recipient:  # recipient of email
+    description: 'recipient of email'
+    required: true
+  subject:  # subject of email
+    description: 'subject of email'
+    default: ""
+  body:  # body of email
+    description: 'body of email'
+    default: ""
+outputs:
+  time: # id of output
+    description: 'The time we greeted you'
+runs:
+  using: 'docker'
+  image: 'docker://andrewjdawes/github-action-simple-smtp:latest'
+  args:
+    - ${{ inputs.host }}
+    - ${{ inputs.port }}
+    - ${{ inputs.username }}
+    - ${{ inputs.password }}
+    - ${{ inputs.sender }}
+    - ${{ inputs.recipient }}
+    - ${{ inputs.subject }}
+    - ${{ inputs.body }}
