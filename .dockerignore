@@ -1,1 +1,4 @@
 Dockerfile
+action.yml
+.prettierrc
+.github
